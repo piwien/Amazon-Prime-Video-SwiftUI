@@ -11,6 +11,7 @@
 		A025AE6B2AE5232100E06885 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A025AE6A2AE5232100E06885 /* ContentView.swift */; };
 		A025AE6D2AE5232400E06885 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A025AE6C2AE5232400E06885 /* Assets.xcassets */; };
 		A025AE702AE5232400E06885 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A025AE6F2AE5232400E06885 /* Preview Assets.xcassets */; };
+		A025AE772AE524CA00E06885 /* ImagesSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A025AE762AE524CA00E06885 /* ImagesSliderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		A025AE6A2AE5232100E06885 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A025AE6C2AE5232400E06885 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A025AE6F2AE5232400E06885 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		A025AE762AE524CA00E06885 /* ImagesSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesSliderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +57,7 @@
 				A025AE6A2AE5232100E06885 /* ContentView.swift */,
 				A025AE6C2AE5232400E06885 /* Assets.xcassets */,
 				A025AE6E2AE5232400E06885 /* Preview Content */,
+				A025AE762AE524CA00E06885 /* ImagesSliderView.swift */,
 			);
 			path = "Amazon-Prime-Video-SwiftUI";
 			sourceTree = "<group>";
@@ -138,6 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A025AE6B2AE5232100E06885 /* ContentView.swift in Sources */,
+				A025AE772AE524CA00E06885 /* ImagesSliderView.swift in Sources */,
 				A025AE692AE5232100E06885 /* Amazon_Prime_Video_SwiftUIApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
