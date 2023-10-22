@@ -12,13 +12,34 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             Color.black
-            VStack {
+            VStack(spacing: 10) {
                 HStack{
                     //prime logo
                     //Spacer()
                     //share tv icon
                     //user profile
                 }
+                HStack{
+                    Button(action: {}, label: {
+                        Text("All")
+                            .foregroundStyle(.black)
+                            .frame(width: 50, height: 30)
+                            .background(Color.white, in: Capsule())
+                    })
+                    Button(action: {}, label: {
+                        Text("Movies")
+                            .foregroundStyle(.white)
+                            .frame(width: 70, height: 30)
+                            .background(Color.black, in: Capsule())
+                    })
+                    Button(action: {}, label: {
+                        Text("TV shows")
+                            .foregroundStyle(.white)
+                            .frame(width: 90, height: 30)
+                            .background(Color.black, in: Capsule())
+                    })
+                    Spacer()
+                }.padding(.horizontal)
                 VStack{
                     //slider
                     ImageSliderView(imageUrls: images)
@@ -29,11 +50,10 @@ struct ContentView: View {
                 VStack {
                     // Prime Movies
                 }
+                Spacer()
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .ignoresSafeArea()
-        
     }
 }
 

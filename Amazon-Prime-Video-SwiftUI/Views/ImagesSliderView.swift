@@ -32,8 +32,9 @@ struct ImageSliderView: View {
                 }
             }
         }
+        .frame(maxWidth: .infinity, maxHeight: 200)
         .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
-        .frame(maxWidth: .infinity, maxHeight: 300)
+        
     }
 }
 

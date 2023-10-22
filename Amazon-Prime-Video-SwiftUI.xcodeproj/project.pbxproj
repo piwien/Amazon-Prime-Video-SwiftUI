@@ -55,9 +55,9 @@
 			children = (
 				A025AE682AE5232100E06885 /* Amazon_Prime_Video_SwiftUIApp.swift */,
 				A025AE6A2AE5232100E06885 /* ContentView.swift */,
+				A025AE782AE52EEC00E06885 /* Views */,
 				A025AE6C2AE5232400E06885 /* Assets.xcassets */,
 				A025AE6E2AE5232400E06885 /* Preview Content */,
-				A025AE762AE524CA00E06885 /* ImagesSliderView.swift */,
 			);
 			path = "Amazon-Prime-Video-SwiftUI";
 			sourceTree = "<group>";
@@ -68,6 +68,14 @@
 				A025AE6F2AE5232400E06885 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		A025AE782AE52EEC00E06885 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A025AE762AE524CA00E06885 /* ImagesSliderView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
