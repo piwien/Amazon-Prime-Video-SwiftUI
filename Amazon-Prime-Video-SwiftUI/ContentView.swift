@@ -104,7 +104,7 @@ struct ContentView: View {
                                         }
                                     }
                                 }
-            
+                                
                             }
                         }
                         Spacer().frame(height: 20)
@@ -132,7 +132,35 @@ struct ContentView: View {
                                     }
                                 }
                                 
-                            }                        }
+                            }
+                        }
+                        Spacer().frame(height: 20)
+
+                        VStack {
+                            HStack{
+                                Text("Prime")
+                                    .foregroundStyle(.blue)
+                                    .fontWeight(.heavy)
+                                Text("-")
+                                Text("Amazon Exclusives")
+                                    .fontWeight(.heavy)
+                                Spacer()
+                            }.padding(.horizontal)
+                            
+                            ScrollView(.horizontal, showsIndicators: false) {
+                                HStack(spacing: 15) {
+                                    ForEach(viewModel.topRated) { toprated in
+                                        NavigationLink {
+                                            ContentDetailView(toprated: toprated)
+                                        } label: {
+                                            PosterCard(topRatedResults: toprated)
+                                        }
+                                        
+                                    }
+                                }
+                                
+                            }
+                        }
                         
                     }.frame(maxWidth: .infinity, maxHeight: .infinity)
                     
@@ -142,6 +170,7 @@ struct ContentView: View {
             .onAppear{
                 viewModel.loadNowPlayingMovies()
                 viewModel.loadNowPlayingSeries()
+                viewModel.loadTopRatedMovies()
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         }

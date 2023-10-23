@@ -11,6 +11,7 @@ import Foundation
 class HomePageViewModel: ObservableObject {
     @Published var movies: [MovieResults] = []
     @Published var series: [SeriesResults] = []
+    @Published var topRated: [TopRated.TopRatedResults] = []
     
     static let APIKEY = "8702cb80fa7566421a1e387b20658952"
     
@@ -36,6 +37,19 @@ class HomePageViewModel: ObservableObject {
                 series = nplayingseries.results
             } catch{
                 print("Loading Now Playing Series Error: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    func loadTopRatedMovies() {
+        Task {
+            let url = URL(string: "https://api.themoviedb.org/3/movie/top_rated?api_key=\(HomePageViewModel.APIKEY)")!
+            do {
+                let (data, _) = try await URLSession.shared.data(from: url)
+                let topratedmovies = try JSONDecoder().decode(TopRated.self, from: data)
+                topRated = topratedmovies.results
+            } catch{
+                print("Loading Top Rated Movies Error: \(error.localizedDescription)")
             }
         }
     }

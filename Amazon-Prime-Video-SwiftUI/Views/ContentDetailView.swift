@@ -13,12 +13,14 @@ struct ContentDetailView: View {
     @StateObject var model = ContentDetailViewModel()
     let movie: MovieResults?
     let series: SeriesResults?
+    let toprated: TopRated.TopRatedResults?
     
     let movieurl = URL(string: "https://m.media-amazon.com/images/S/pv-target-images/e7317d239c44c58c3c8638cb5049e0828f5237c2169e23eb1ce10c990bb415a7.jpg")
     
-    init(movie: MovieResults? = nil, series: SeriesResults? = nil) {
+    init(movie: MovieResults? = nil, series: SeriesResults? = nil, toprated: TopRated.TopRatedResults? = nil) {
         self.movie = movie
         self.series = series
+        self.toprated = toprated
     }
     var body: some View {
         ZStack {
@@ -45,7 +47,7 @@ struct ContentDetailView: View {
                 
                 ScrollView {
                     VStack {
-                        AsyncImage(url: movie?.backdropURL ?? series?.backdropURL) { phase in
+                        AsyncImage(url: movie?.backdropURL ?? series?.backdropURL ?? toprated?.backdropURL) { phase in
                             switch phase {
                             case .empty:
                                 ProgressView()
@@ -64,7 +66,7 @@ struct ContentDetailView: View {
                     }
 
                     HStack {
-                        Text((movie?.title ?? series?.name)!)
+                        Text((movie?.title ?? series?.name ?? toprated?.title)!)
                             .font(.title)
                             .bold()
 
@@ -109,8 +111,10 @@ struct ContentDetailView: View {
                     }.foregroundStyle(.white)
                     Spacer().frame(height: 20)
                     VStack {
-                        Text((movie?.overview ?? series?.overview)!)
-                    }
+//                        Text((movie?.overview ?? series?.overview ?? toprated?.overview)!)
+                        Text(limitText((movie?.overview ?? series?.overview ?? toprated?.overview)!, maxLength:150))
+                       
+                    }.padding(.horizontal)
                     HStack{
                         // Vote average
                         
@@ -148,12 +152,22 @@ struct ContentDetailView: View {
                 await model.movieCredits(for: movieId)
             } else if let seriesId = series?.id {
                 await model.seriesCredits(for: seriesId)
+            } else if let topratedID = toprated?.id {
+                await model.movieCredits(for: topratedID)
             }
             await model.loadMoviesCastProfiles()
             await model.loadSeriesCastProfiles()
         }
 
     }
+}
+
+func limitText(_ text: String, maxLength: Int) -> String {
+    if text.count > maxLength {
+        let index = text.index(text.startIndex, offsetBy: maxLength)
+        return text[..<index] + "..."
+    }
+    return text
 }
 
 #Preview {
