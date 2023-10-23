@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A00E9ABE2AE687460010944C /* ContentDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00E9ABD2AE687460010944C /* ContentDetailView.swift */; };
+		A00E9AC02AE69B910010944C /* ContentDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00E9ABF2AE69B910010944C /* ContentDetailViewModel.swift */; };
+		A00E9AC22AE69BF70010944C /* CastProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00E9AC12AE69BF70010944C /* CastProfile.swift */; };
+		A00E9AC42AE69C010010944C /* MovieCredits.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00E9AC32AE69C010010944C /* MovieCredits.swift */; };
+		A00E9AC62AE6A47F0010944C /* SeriesCredits.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00E9AC52AE6A47F0010944C /* SeriesCredits.swift */; };
 		A025AE692AE5232100E06885 /* Amazon_Prime_Video_SwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A025AE682AE5232100E06885 /* Amazon_Prime_Video_SwiftUIApp.swift */; };
 		A025AE6B2AE5232100E06885 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A025AE6A2AE5232100E06885 /* ContentView.swift */; };
 		A025AE6D2AE5232400E06885 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A025AE6C2AE5232400E06885 /* Assets.xcassets */; };
@@ -21,6 +26,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A00E9ABD2AE687460010944C /* ContentDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentDetailView.swift; sourceTree = "<group>"; };
+		A00E9ABF2AE69B910010944C /* ContentDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentDetailViewModel.swift; sourceTree = "<group>"; };
+		A00E9AC12AE69BF70010944C /* CastProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastProfile.swift; sourceTree = "<group>"; };
+		A00E9AC32AE69C010010944C /* MovieCredits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCredits.swift; sourceTree = "<group>"; };
+		A00E9AC52AE6A47F0010944C /* SeriesCredits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesCredits.swift; sourceTree = "<group>"; };
 		A025AE652AE5232100E06885 /* Amazon-Prime-Video-SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Amazon-Prime-Video-SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A025AE682AE5232100E06885 /* Amazon_Prime_Video_SwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Amazon_Prime_Video_SwiftUIApp.swift; sourceTree = "<group>"; };
 		A025AE6A2AE5232100E06885 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -75,6 +85,10 @@
 				A025AE7F2AE5BF3900E06885 /* MovieResults.swift */,
 				A025AE812AE5CBBD00E06885 /* Series.swift */,
 				A025AE832AE5CBC800E06885 /* SeriesResults.swift */,
+				A00E9ABF2AE69B910010944C /* ContentDetailViewModel.swift */,
+				A00E9AC32AE69C010010944C /* MovieCredits.swift */,
+				A00E9AC12AE69BF70010944C /* CastProfile.swift */,
+				A00E9AC52AE6A47F0010944C /* SeriesCredits.swift */,
 			);
 			path = "Amazon-Prime-Video-SwiftUI";
 			sourceTree = "<group>";
@@ -92,6 +106,7 @@
 			children = (
 				A025AE762AE524CA00E06885 /* ImagesSliderView.swift */,
 				A025AE792AE5BC2B00E06885 /* MoviesAndSeriesCard.swift */,
+				A00E9ABD2AE687460010944C /* ContentDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -168,11 +183,16 @@
 			files = (
 				A025AE802AE5BF3900E06885 /* MovieResults.swift in Sources */,
 				A025AE6B2AE5232100E06885 /* ContentView.swift in Sources */,
+				A00E9AC02AE69B910010944C /* ContentDetailViewModel.swift in Sources */,
 				A025AE822AE5CBBD00E06885 /* Series.swift in Sources */,
+				A00E9AC42AE69C010010944C /* MovieCredits.swift in Sources */,
 				A025AE842AE5CBC800E06885 /* SeriesResults.swift in Sources */,
 				A025AE772AE524CA00E06885 /* ImagesSliderView.swift in Sources */,
+				A00E9AC62AE6A47F0010944C /* SeriesCredits.swift in Sources */,
+				A00E9ABE2AE687460010944C /* ContentDetailView.swift in Sources */,
 				A025AE7E2AE5BF2B00E06885 /* Movie.swift in Sources */,
 				A025AE692AE5232100E06885 /* Amazon_Prime_Video_SwiftUIApp.swift in Sources */,
+				A00E9AC22AE69BF70010944C /* CastProfile.swift in Sources */,
 				A025AE7A2AE5BC2B00E06885 /* MoviesAndSeriesCard.swift in Sources */,
 				A025AE7C2AE5BE9800E06885 /* HomePageViewModel.swift in Sources */,
 			);
