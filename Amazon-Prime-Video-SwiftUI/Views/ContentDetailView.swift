@@ -128,7 +128,11 @@ struct ContentDetailView: View {
                     }
                     
                     ScrollView(.horizontal, showsIndicators: false) {
-                        
+                        HStack{
+                            ForEach(model.castProfiles) { cast in
+                                CastView(cast: cast)
+                            }
+                        }
                     }
                 }
 
@@ -145,6 +149,8 @@ struct ContentDetailView: View {
             } else if let seriesId = series?.id {
                 await model.seriesCredits(for: seriesId)
             }
+            await model.loadMoviesCastProfiles()
+            await model.loadSeriesCastProfiles()
         }
 
     }

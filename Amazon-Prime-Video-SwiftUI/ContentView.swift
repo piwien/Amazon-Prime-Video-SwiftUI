@@ -44,10 +44,11 @@ struct ContentView: View {
                         //share tv icon
                         Image(systemName: "tv.badge.wifi")
                             .resizable()
-                            .frame(width: 25, height: 20)
+                            .frame(width: 30, height: 25)
+                        Spacer().frame(width: 20)
                         Image(systemName: "person.circle.fill")
                             .resizable()
-                            .frame(width: 30, height: 30)
+                            .frame(width: 35, height: 35)
                         //user profile
                     }
                     .padding(.horizontal)

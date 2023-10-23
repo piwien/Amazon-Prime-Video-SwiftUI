@@ -12,7 +12,7 @@ import SwiftUI
 class ContentDetailViewModel: ObservableObject {
     
     @Published var movieCredits: MovieCredits?
-    @Published var cast: [MovieCredits.Cast] = []
+    @Published var moviescast: [MovieCredits.Cast] = []
     @Published var castProfiles: [CastProfile] = []
     @Published var seriesCredits: SeriesCredits?
     @Published var seriescast: [SeriesCredits.Cast] = []
@@ -23,7 +23,7 @@ class ContentDetailViewModel: ObservableObject {
             let (data, _) = try await URLSession.shared.data(from: url)
             let credits = try JSONDecoder().decode(MovieCredits.self, from: data)
             self.movieCredits = credits
-            self.cast = credits.cast /*.sorted(by: { $0.order < $1.order })*/
+            self.moviescast = credits.cast /*.sorted(by: { $0.order < $1.order })*/
         } catch {
             print("Error movie credits data:", error.localizedDescription) // Hata mesajını yazdır
         }
@@ -41,17 +41,31 @@ class ContentDetailViewModel: ObservableObject {
         }
     }
     
-    func loadCastProfiles() async {
+    func loadMoviesCastProfiles() async {
         do {
-            for member in cast {
+            for member in moviescast{
                 let url = URL(string: "https://api.themoviedb.org/3/person/\(member.id)?api_key=\(HomePageViewModel.APIKEY)&language=en-US")!
                 let (data, _) = try await URLSession.shared.data(from: url)
                 let profile = try JSONDecoder().decode(CastProfile.self, from: data)
-                print(profile)
+                print("Movies Cast Profile loaded: \(profile)")
                 castProfiles.append(profile)
             }
         } catch {
-            print("Error cast profile data:", error.localizedDescription) // Hata mesajını yazdır
+            print("Error moviescast profile data:", error.localizedDescription) // Hata mesajını yazdır
+        }
+    }
+    
+    func loadSeriesCastProfiles() async {
+        do {
+            for member in seriescast {
+                let url = URL(string: "https://api.themoviedb.org/3/person/\(member.id)?api_key=\(HomePageViewModel.APIKEY)&language=en-US")!
+                let (data, _) = try await URLSession.shared.data(from: url)
+                let profile = try JSONDecoder().decode(CastProfile.self, from: data)
+                print("Series Cast Profile loaded: \(profile)")
+                castProfiles.append(profile)
+            }
+        } catch {
+            print("Error seriescast profile data:", error.localizedDescription) // Hata mesajını yazdır
         }
     }
 }

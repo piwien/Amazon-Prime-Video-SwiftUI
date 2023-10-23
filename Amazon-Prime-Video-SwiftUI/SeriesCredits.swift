@@ -16,6 +16,6 @@ struct SeriesCredits: Decodable {
         let id: Int
         let character: String?
         let order: Int
-        let profile_path: String
+        let profile_path: String?
     }
 }
