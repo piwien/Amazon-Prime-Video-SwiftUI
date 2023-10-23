@@ -19,7 +19,7 @@ struct ContentView: View {
         
             ZStack {
                 Color.black
-                VStack(spacing: 15) {
+                VStack(spacing: 10) {
                     HStack{
                         //prime logo
                         AsyncImage(url: amazonPrimeLogoPNG) { phase in
@@ -79,28 +79,9 @@ struct ContentView: View {
                         HStack{
                             //slider
                             ImageSliderView(imageUrls: images)
-                        }.frame(width: .infinity, height: 200)
-                        VStack {
-                            // Prime TV Series
-                            HStack{
-                                Text("Prime")
-                                    .foregroundStyle(.blue)
-                                    .fontWeight(.heavy)
-                                Text("-")
-                                Text("TV Series")
-                                    .fontWeight(.heavy)
-                                Spacer()
-                            }
-                            
-                            ScrollView(.horizontal, showsIndicators: false) {
-                                HStack {
-                                    ForEach(viewModel.series) { image in
-                                        MoviesAndSeriesCard(seriesitems: image)
-                                    }
-                                }
-                                
-                            }                        }
-                        VStack {
+                        }
+                        .frame(width: .infinity, height: 270)
+                        VStack(spacing: 10) {
                             // Prime Movies
                             HStack{
                                 Text("Prime")
@@ -110,7 +91,7 @@ struct ContentView: View {
                                 Text("Movies")
                                     .fontWeight(.heavy)
                                 Spacer()
-                            }
+                            }.padding(.horizontal)
                             
                             ScrollView(.horizontal, showsIndicators: false) {
                                 HStack {
@@ -118,9 +99,31 @@ struct ContentView: View {
                                         MoviesAndSeriesCard(movieitems: image)
                                     }
                                 }
-                                
+            
                             }
                         }
+                        Spacer().frame(height: 20)
+                        VStack(spacing: 10) {
+                            // Prime TV Series
+                            HStack{
+                                Text("Prime")
+                                    .foregroundStyle(.blue)
+                                    .fontWeight(.heavy)
+                                Text("-")
+                                Text("TV Series")
+                                    .fontWeight(.heavy)
+                                Spacer()
+                            }.padding(.horizontal)
+                            
+                            ScrollView(.horizontal, showsIndicators: false) {
+                                HStack {
+                                    ForEach(viewModel.series) { image in
+                                        MoviesAndSeriesCard(seriesitems: image)
+                                    }
+                                }
+                                
+                            }                        }
+                        
                     }.frame(maxWidth: .infinity, maxHeight: .infinity)
                     
                 }

@@ -23,12 +23,12 @@ struct MoviesAndSeriesCard: View {
                 image
                     .resizable()
                     .scaledToFill()
-                    .frame(width: 200, height: 100)
+                    .frame(width: 180, height: 100)
                 
                 
             } placeholder: {
                 Rectangle().fill(Color.gray)
-                    .frame(width: 200, height: 100)
+                    .frame(width: 180, height: 100)
             }
         }.clipShape(RoundedRectangle(cornerRadius: 10))
     }
