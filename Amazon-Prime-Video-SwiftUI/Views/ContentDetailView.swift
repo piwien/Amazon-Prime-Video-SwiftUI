@@ -15,6 +15,9 @@ struct ContentDetailView: View {
     let series: SeriesResults?
     let toprated: TopRated.TopRatedResults?
     
+    @State private var isExpanded = false
+    let maxTextLength = 150
+    
     let movieurl = URL(string: "https://m.media-amazon.com/images/S/pv-target-images/e7317d239c44c58c3c8638cb5049e0828f5237c2169e23eb1ce10c990bb415a7.jpg")
     
     init(movie: MovieResults? = nil, series: SeriesResults? = nil, toprated: TopRated.TopRatedResults? = nil) {
@@ -111,8 +114,12 @@ struct ContentDetailView: View {
                     }.foregroundStyle(.white)
                     Spacer().frame(height: 20)
                     VStack {
+                        Text(limitText((movie?.overview ?? series?.overview ?? toprated?.overview)!, maxLength: isExpanded ? (movie?.overview ?? series?.overview ?? toprated?.overview)!.count : maxTextLength))
+                                    .onTapGesture {
+                                        isExpanded.toggle()
+                                    }
 //                        Text((movie?.overview ?? series?.overview ?? toprated?.overview)!)
-                        Text(limitText((movie?.overview ?? series?.overview ?? toprated?.overview)!, maxLength:150))
+//      version 1                  Text(limitText((movie?.overview ?? series?.overview ?? toprated?.overview)!, maxLength:150))
                        
                     }.padding(.horizontal)
                     HStack{
@@ -140,8 +147,6 @@ struct ContentDetailView: View {
                     }
                 }
 
-                
-
                 Spacer()
             }
         }
@@ -162,13 +167,19 @@ struct ContentDetailView: View {
     }
 }
 
+//func limitText(_ text: String, maxLength: Int) -> String {
+//        if text.count > maxLength {
+//            return String(text.prefix(maxLength)) + "..."
+//        }
+//        return text
+//    }  // version 1
+
 func limitText(_ text: String, maxLength: Int) -> String {
-    if text.count > maxLength {
-        let index = text.index(text.startIndex, offsetBy: maxLength)
-        return text[..<index] + "..."
-    }
-    return text
-}
+       if text.count > maxLength {
+           return String(text.prefix(maxLength)) + "..."
+       }
+       return text
+   }
 
 #Preview {
     ContentDetailView()
