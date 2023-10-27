@@ -50,7 +50,6 @@ struct CastView: View {
         }
         .frame(width: 110, height: 150)
         .clipShape(RoundedRectangle(cornerRadius: 10))
-
     }
 }
 

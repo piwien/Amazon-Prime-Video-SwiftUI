@@ -67,12 +67,12 @@ struct ContentDetailView: View {
                             }
                         }
                     }
-
+                    
                     HStack {
                         Text((movie?.title ?? series?.name ?? toprated?.title)!)
                             .font(.title)
                             .bold()
-
+                        
                     }
                     HStack {
                         Button(action: {}, label: {
@@ -115,12 +115,12 @@ struct ContentDetailView: View {
                     Spacer().frame(height: 20)
                     VStack {
                         Text(limitText((movie?.overview ?? series?.overview ?? toprated?.overview)!, maxLength: isExpanded ? (movie?.overview ?? series?.overview ?? toprated?.overview)!.count : maxTextLength))
-                                    .onTapGesture {
-                                        isExpanded.toggle()
-                                    }
-//                        Text((movie?.overview ?? series?.overview ?? toprated?.overview)!)
-//      version 1                  Text(limitText((movie?.overview ?? series?.overview ?? toprated?.overview)!, maxLength:150))
-                       
+                            .onTapGesture {
+                                isExpanded.toggle()
+                            }
+                        //                        Text((movie?.overview ?? series?.overview ?? toprated?.overview)!)
+                        //      version 1                  Text(limitText((movie?.overview ?? series?.overview ?? toprated?.overview)!, maxLength:150))
+                        
                     }.padding(.horizontal)
                     HStack{
                         // Vote average
@@ -129,7 +129,7 @@ struct ContentDetailView: View {
                         // Release Date
                     }
                     Spacer().frame(height: 20)
-
+                    
                     HStack{
                         Text("Cast & Crew")
                             .fontWeight(.bold)
@@ -141,12 +141,16 @@ struct ContentDetailView: View {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack{
                             ForEach(model.castProfiles) { cast in
-                                CastView(cast: cast)
+                                NavigationLink {
+                                    PersonDetailView(cast: cast)
+                                } label: {
+                                    CastView(cast: cast)
+                                }
                             }
                         }
                     }
                 }
-
+                
                 Spacer()
             }
         }
@@ -163,7 +167,7 @@ struct ContentDetailView: View {
             await model.loadMoviesCastProfiles()
             await model.loadSeriesCastProfiles()
         }
-
+        
     }
 }
 
@@ -175,11 +179,11 @@ struct ContentDetailView: View {
 //    }  // version 1
 
 func limitText(_ text: String, maxLength: Int) -> String {
-       if text.count > maxLength {
-           return String(text.prefix(maxLength)) + "..."
-       }
-       return text
-   }
+    if text.count > maxLength {
+        return String(text.prefix(maxLength)) + "..."
+    }
+    return text
+}
 
 #Preview {
     ContentDetailView()

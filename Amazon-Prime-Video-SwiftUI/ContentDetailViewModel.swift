@@ -68,6 +68,7 @@ class ContentDetailViewModel: ObservableObject {
             print("Error seriescast profile data:", error.localizedDescription) // Hata mesajını yazdır
         }
     }
+    
 }
 
 
