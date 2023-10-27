@@ -34,7 +34,7 @@ struct PersonDetailView: View {
                     }
                     .padding(.horizontal)
                     .padding(.vertical, 5)
-                    ScrollView {
+                    ScrollView(showsIndicators: false) {
                         ZStack(alignment: .bottom) {
                             AsyncImage(url: cast?.photoUrl) { image in
                                 image
