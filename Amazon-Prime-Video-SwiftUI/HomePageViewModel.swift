@@ -12,6 +12,7 @@ class HomePageViewModel: ObservableObject {
     @Published var movies: [MovieResults] = []
     @Published var series: [SeriesResults] = []
     @Published var topRated: [TopRated.TopRatedResults] = []
+    @Published var searchResults: [SearchModel.SearchResults] = []
     
     static let APIKEY = "8702cb80fa7566421a1e387b20658952"
     
@@ -50,6 +51,19 @@ class HomePageViewModel: ObservableObject {
                 topRated = topratedmovies.results
             } catch{
                 print("Loading Top Rated Movies Error: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    func searchMulti(term: String) {
+        Task {
+            let url = URL(string: "https://api.themoviedb.org/3/search/multi?api_key=8702cb80fa7566421a1e387b20658952&language=en-US&include_adult=false&query=\(term)")!
+            do {
+                let (data, _) = try await URLSession.shared.data(from: url)
+                let searchdata = try JSONDecoder().decode(SearchModel.self, from: data)
+                searchResults = searchdata.results
+            } catch {
+                print("Search Error: \(error.localizedDescription)")
             }
         }
     }

@@ -22,7 +22,7 @@ struct Amazon_Prime_Video_SwiftUIApp: App {
                         Image(systemName: "tray.and.arrow.down")
                         Text("Downloads")
                     } }
-                Text("Welcome Search Page")
+                SearchView()
                     .tabItem { VStack {
                         Image(systemName: "magnifyingglass")
                         Text("Find")
