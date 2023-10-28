@@ -11,6 +11,7 @@ struct ContentDetailView: View {
     
     @Environment(\.dismiss) var dismiss
     @StateObject var model = ContentDetailViewModel()
+    let searchitems: SearchModel.SearchResults?
     let movie: MovieResults?
     let series: SeriesResults?
     let toprated: TopRated.TopRatedResults?
@@ -18,12 +19,11 @@ struct ContentDetailView: View {
     @State private var isExpanded = false
     let maxTextLength = 150
     
-    let movieurl = URL(string: "https://m.media-amazon.com/images/S/pv-target-images/e7317d239c44c58c3c8638cb5049e0828f5237c2169e23eb1ce10c990bb415a7.jpg")
-    
-    init(movie: MovieResults? = nil, series: SeriesResults? = nil, toprated: TopRated.TopRatedResults? = nil) {
+    init(movie: MovieResults? = nil, series: SeriesResults? = nil, toprated: TopRated.TopRatedResults? = nil, searchitems: SearchModel.SearchResults? = nil) {
         self.movie = movie
         self.series = series
         self.toprated = toprated
+        self.searchitems = searchitems
     }
     var body: some View {
         ZStack {
@@ -50,7 +50,7 @@ struct ContentDetailView: View {
                 
                 ScrollView {
                     VStack {
-                        AsyncImage(url: movie?.backdropURL ?? series?.backdropURL ?? toprated?.backdropURL) { phase in
+                        AsyncImage(url: movie?.backdropURL ?? series?.backdropURL ?? toprated?.backdropURL ?? searchitems?.backdropURL) { phase in
                             switch phase {
                             case .empty:
                                 ProgressView()
@@ -69,9 +69,14 @@ struct ContentDetailView: View {
                     }
                     
                     HStack {
-                        Text((movie?.title ?? series?.name ?? toprated?.title)!)
-                            .font(.title)
-                            .bold()
+                        if let title = movie?.title ?? series?.name ?? toprated?.title ?? searchitems?.name ?? searchitems?.title {
+                            Text(title)
+                                .font(.title)
+                                .bold()
+                        } else {
+                            // Handle the case where all values are nil
+                            Text("No title available")
+                        }
                         
                     }
                     HStack {
@@ -114,7 +119,7 @@ struct ContentDetailView: View {
                     }.foregroundStyle(.white)
                     Spacer().frame(height: 20)
                     VStack {
-                        Text(limitText((movie?.overview ?? series?.overview ?? toprated?.overview)!, maxLength: isExpanded ? (movie?.overview ?? series?.overview ?? toprated?.overview)!.count : maxTextLength))
+                        Text(limitText((movie?.overview ?? series?.overview ?? toprated?.overview ?? searchitems?.overview)!, maxLength: isExpanded ? (movie?.overview ?? series?.overview ?? toprated?.overview ?? searchitems?.overview)!.count : maxTextLength))
                             .onTapGesture {
                                 isExpanded.toggle()
                             }
@@ -163,6 +168,10 @@ struct ContentDetailView: View {
                 await model.seriesCredits(for: seriesId)
             } else if let topratedID = toprated?.id {
                 await model.movieCredits(for: topratedID)
+            } else if ((searchitems?.title?.isEmpty) != nil) {
+                await model.movieCredits(for: (searchitems?.id)!)
+            } else {
+                await model.seriesCredits(for: (searchitems?.id)!)
             }
             await model.loadMoviesCastProfiles()
             await model.loadSeriesCastProfiles()

@@ -245,7 +245,12 @@ struct SearchView: View {
                         
                         ScrollView(.vertical, showsIndicators: false) {
                             ForEach(viewModel.searchResults) { item in
-                                SearchCard(searchitems: item)
+                                
+                                NavigationLink {
+                                    ContentDetailView(searchitems: item)
+                                } label: {
+                                    SearchCard(searchitems: item)                                }
+                                
                             }
                         }
                         
