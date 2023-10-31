@@ -23,14 +23,20 @@ struct SearchModel: Decodable {
         let overview: String?
         let first_air_date: String?
         let name: String?
+        let profile_path: String?
         let poster_path: String?
         let release_date: String?
         let vote_average: Float?
         let vote_count: Int?
         
         var backdropURL: URL? {
-            let baseURL = URL(string: "https://image.tmdb.org/t/p/w500/")
+            let baseURL = URL(string: "https://image.tmdb.org/t/p/w500")
             return baseURL?.appending(path: backdrop_path ?? "")
+        }
+        
+        var profileposter: URL? {
+            let baseURL = URL(string: "https://image.tmdb.org/t/p/w500")
+            return baseURL?.appending(path: profile_path ?? "eAOtKAc4p2C3DV8TGJQJzw8DeRv.jpg")
         }
     }
 }

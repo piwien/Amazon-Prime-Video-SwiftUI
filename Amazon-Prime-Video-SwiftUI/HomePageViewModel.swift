@@ -62,6 +62,7 @@ class HomePageViewModel: ObservableObject {
                 let (data, _) = try await URLSession.shared.data(from: url)
                 let searchdata = try JSONDecoder().decode(SearchModel.self, from: data)
                 searchResults = searchdata.results
+                print(searchResults)
             } catch {
                 print("Search Error: \(error.localizedDescription)")
             }

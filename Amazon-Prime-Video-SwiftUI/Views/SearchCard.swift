@@ -13,19 +13,41 @@ struct SearchCard: View {
         ZStack {
             Color.black
             HStack {
-                AsyncImage(url: searchitems?.backdropURL) { image in
-                    image
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 180, height: 100)
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                    
-                }  placeholder: {
-                    Rectangle().fill(Color.gray)
-                        .frame(width: 180, height: 100)
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                }
-                
+                if searchitems?.profile_path?.isEmpty ?? true {
+                    AsyncImage(url: searchitems?.backdropURL) { image in
+    
+                            image
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 180, height: 100)
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                        
+                    }  placeholder: {
+                        
+                            Rectangle().fill(Color.gray)
+                                .frame(width: 180, height: 100)
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                        
+                        
+                    }
+                } else {
+                    ZStack {
+                        AsyncImage(url: searchitems?.profileposter) { image in
+                            
+                            image
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 70, height: 100)
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                            
+                        }  placeholder: {
+                            
+                            Rectangle().fill(Color.gray)
+                                .frame(width: 70, height: 100)
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                        }
+                    }.frame(width: 180, height: 100, alignment: .center)
+                }    
                 
                 VStack(spacing: 10) {
                     Text(limitTitle(searchitems?.title) ?? limitTitle(searchitems?.name) ?? "No title")
@@ -52,5 +74,5 @@ func limitTitle(_ title: String?) -> String? {
 }
 
 #Preview {
-    SearchCard(searchitems: .init(adult: false, backdrop_path: "", id: 1, title: "", original_language: "", overview: "", first_air_date: "23.05.2024", name: "Loki", poster_path: "", release_date: "", vote_average: 3.4, vote_count: 44))
+    SearchCard(searchitems: .init(adult: false, backdrop_path: "", id: 1, title: "John wick 3", original_language: "", overview: "", first_air_date: "23.05.2024", name: "Loki", profile_path: "", poster_path: "", release_date: "15.05.2023", vote_average: 3.4, vote_count: 44))
 }
