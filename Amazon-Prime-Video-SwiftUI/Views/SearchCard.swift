@@ -23,10 +23,11 @@ struct SearchCard: View {
                                 .clipShape(RoundedRectangle(cornerRadius: 10))
                         
                     }  placeholder: {
-                        
-                            Rectangle().fill(Color.gray)
-                                .frame(width: 180, height: 100)
-                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                        ProgressView()
+                            .frame(width: 180, height: 100)
+                            .background(Color(.gray))
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                      
                         
                         
                     }
@@ -37,27 +38,36 @@ struct SearchCard: View {
                             image
                                 .resizable()
                                 .scaledToFill()
-                                .frame(width: 70, height: 100)
-                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                                .frame(width: 100, height: 100)
+                                .clipShape(Circle())
                             
                         }  placeholder: {
                             
-                            Rectangle().fill(Color.gray)
-                                .frame(width: 70, height: 100)
-                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                            ProgressView()
+                                .frame(width: 100, height: 100)
+                                .background(Color(.gray))
+                                .clipShape(Circle())
                         }
                     }.frame(width: 180, height: 100, alignment: .center)
                 }    
-                
-                VStack(spacing: 10) {
-                    Text(limitTitle(searchitems?.title) ?? limitTitle(searchitems?.name) ?? "No title")
-                        .font(.title2)
-                        .bold()
-                        .multilineTextAlignment(.center)
-                    Text(searchitems?.release_date ?? searchitems?.first_air_date ?? "Empty Data!")
-                        .font(.caption)
-                    
-                }.frame(maxWidth: .infinity)
+                if searchitems?.profile_path?.isEmpty ?? true {
+                    VStack(spacing: 10) {
+                        Text(limitTitle(searchitems?.title) ?? limitTitle(searchitems?.name) ?? "No title")
+                            .font(.title2)
+                            .bold()
+                            .multilineTextAlignment(.center)
+                        Text(searchitems?.release_date ?? searchitems?.first_air_date ?? "Empty Data!")
+                            .font(.caption)
+                        
+                    }.frame(maxWidth: .infinity)
+                } else {
+                    VStack(spacing: 10) {
+                        Text(limitTitle(searchitems?.title) ?? limitTitle(searchitems?.name) ?? "No title")
+                            .font(.title2)
+                            .bold()
+                            .multilineTextAlignment(.center)
+                    }.frame(maxWidth: .infinity)
+                }
             }.padding(.horizontal)
         }
     }
