@@ -16,6 +16,7 @@ class ContentDetailViewModel: ObservableObject {
     @Published var castProfiles: [CastProfile] = []
     @Published var seriesCredits: SeriesCredits?
     @Published var seriescast: [SeriesCredits.Cast] = []
+    @Published var searchcastdata: CastProfile?
     
     func movieCredits(for movieid: Int) async {
         let url = URL(string: "https://api.themoviedb.org/3/movie/\(movieid)/credits?api_key=\(HomePageViewModel.APIKEY)&language=en-US")!
@@ -69,17 +70,17 @@ class ContentDetailViewModel: ObservableObject {
         }
     }
     
-//    func loadCastProfiles(castid: Int) async {
-//        do {
-//                let url = URL(string: "https://api.themoviedb.org/3/person/\(castid)?api_key=\(HomePageViewModel.APIKEY)&language=en-US")!
-//                let (data, _) = try await URLSession.shared.data(from: url)
-//                let profile = try JSONDecoder().decode(CastProfile.self, from: data)
-//                print("Series Cast Profile loaded: \(profile)")
-//                castProfiles.append(profile)
-//        } catch {
-//            print("Error cast profile data:", error.localizedDescription) // Hata mesajını yazdır
-//        }
-//    }
+    func loadCastProfiles(castid: Int) async {
+        do {
+                let url = URL(string: "https://api.themoviedb.org/3/person/\(castid)?api_key=\(HomePageViewModel.APIKEY)&language=en-US")!
+                let (data, _) = try await URLSession.shared.data(from: url)
+                let profile = try JSONDecoder().decode(CastProfile.self, from: data)
+                print("Series Cast Profile loaded: \(profile)")
+            self.searchcastdata = profile
+        } catch {
+            print("Error cast profile data:", error.localizedDescription) // Hata mesajını yazdır
+        }
+    }
     
 }
 

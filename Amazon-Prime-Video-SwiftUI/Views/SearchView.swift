@@ -10,6 +10,8 @@ import SwiftUI
 struct SearchView: View {
     @StateObject var viewModel = HomePageViewModel()
     @State var searchtext = ""
+    @StateObject var castModel = ContentDetailViewModel()
+    
     
     var body: some View {
         NavigationView{
@@ -244,18 +246,35 @@ struct SearchView: View {
                         .cornerRadius(15)
                         .padding(.horizontal)
                         
+                        
+                        
                         ScrollView(.vertical, showsIndicators: false) {
                             ForEach(viewModel.searchResults) { item in
-                                
-                                NavigationLink {
-                                    ContentDetailView(searchitems: item)
-                                } label: {
-                                    SearchCard(searchitems: item)                                }
-                                
+                                if ((item.profile_path?.isEmpty) != nil) {
+                                    NavigationLink{
+                                        PersonDetailView(cast: castModel.searchcastdata)
+                                    } label: {
+                                        SearchCard(searchitems: item)
+                                            .onTapGesture {
+                                            Task {
+                                                do {
+                                                    await castModel.loadCastProfiles(castid: item.id)
+                                                    print("CASTDATATATA \(String(describing: castModel.searchcastdata))")
+                                                }
+                                            }
+                                        }
+                                    }
+                                    
+                                } else {
+                                    NavigationLink(
+                                        destination: ContentDetailView(searchitems: item),
+                                        label: {
+                                            SearchCard(searchitems: item)
+                                        }
+                                    )
+                                }
                             }
                         }
-                        
-
                     }
                 }
             }
@@ -264,7 +283,9 @@ struct SearchView: View {
             viewModel.searchMulti(term: newValue)
         }
     }
+    
 }
+
 
 #Preview {
     SearchView()

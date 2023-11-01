@@ -35,7 +35,7 @@ struct SearchModel: Decodable {
         }
         
         var profileposter: URL? {
-            let baseURL = URL(string: "https://image.tmdb.org/t/p/w500")
+            let baseURL = URL(string: "https://image.tmdb.org/t/p/w200")
             return baseURL?.appending(path: profile_path ?? "eAOtKAc4p2C3DV8TGJQJzw8DeRv.jpg")
         }
     }

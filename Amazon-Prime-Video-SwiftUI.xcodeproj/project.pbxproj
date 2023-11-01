@@ -91,20 +91,11 @@
 			children = (
 				A025AE682AE5232100E06885 /* Amazon_Prime_Video_SwiftUIApp.swift */,
 				A025AE6A2AE5232100E06885 /* ContentView.swift */,
+				A0CBEA382AF24CC700C0B6B7 /* ViewModel */,
+				A0CBEA372AF24CBD00C0B6B7 /* Model */,
 				A025AE782AE52EEC00E06885 /* Views */,
-				A025AE7B2AE5BE9800E06885 /* HomePageViewModel.swift */,
-				A025E3F52AE70FCF00A01ED6 /* TopRated.swift */,
-				A025AE7D2AE5BF2B00E06885 /* Movie.swift */,
-				A025AE7F2AE5BF3900E06885 /* MovieResults.swift */,
-				A025AE812AE5CBBD00E06885 /* Series.swift */,
-				A025AE832AE5CBC800E06885 /* SeriesResults.swift */,
-				A00E9ABF2AE69B910010944C /* ContentDetailViewModel.swift */,
-				A00E9AC32AE69C010010944C /* MovieCredits.swift */,
-				A00E9AC12AE69BF70010944C /* CastProfile.swift */,
-				A00E9AC52AE6A47F0010944C /* SeriesCredits.swift */,
 				A025AE6C2AE5232400E06885 /* Assets.xcassets */,
 				A025AE6E2AE5232400E06885 /* Preview Content */,
-				A0AC057F2AEC30B500658871 /* SearchModel.swift */,
 			);
 			path = "Amazon-Prime-Video-SwiftUI";
 			sourceTree = "<group>";
@@ -130,6 +121,31 @@
 				A0AC05812AED1F3A00658871 /* SearchCard.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		A0CBEA372AF24CBD00C0B6B7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A025AE7D2AE5BF2B00E06885 /* Movie.swift */,
+				A025AE7F2AE5BF3900E06885 /* MovieResults.swift */,
+				A025AE812AE5CBBD00E06885 /* Series.swift */,
+				A025AE832AE5CBC800E06885 /* SeriesResults.swift */,
+				A00E9AC32AE69C010010944C /* MovieCredits.swift */,
+				A00E9AC52AE6A47F0010944C /* SeriesCredits.swift */,
+				A025E3F52AE70FCF00A01ED6 /* TopRated.swift */,
+				A00E9AC12AE69BF70010944C /* CastProfile.swift */,
+				A0AC057F2AEC30B500658871 /* SearchModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A0CBEA382AF24CC700C0B6B7 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A025AE7B2AE5BE9800E06885 /* HomePageViewModel.swift */,
+				A00E9ABF2AE69B910010944C /* ContentDetailViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
