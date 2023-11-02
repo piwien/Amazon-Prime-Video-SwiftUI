@@ -71,6 +71,8 @@ struct PersonDetailView: View {
                                 Text("Biography")
                                     .bold()
                                     .font(.title2)
+                                    .italic()
+                                    .underline()
                                 Spacer()
                             }.padding(.horizontal,30)
                             Spacer().frame(height: 10)
