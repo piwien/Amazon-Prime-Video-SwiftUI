@@ -31,6 +31,7 @@
 		A0AC05802AEC30B500658871 /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AC057F2AEC30B500658871 /* SearchModel.swift */; };
 		A0AC05822AED1F3A00658871 /* SearchCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AC05812AED1F3A00658871 /* SearchCard.swift */; };
 		A0CBEA3A2AF3CB0000C0B6B7 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CBEA392AF3CB0000C0B6B7 /* LoadingView.swift */; };
+		A0CBEA3C2AF3D09400C0B6B7 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CBEA3B2AF3D09400C0B6B7 /* UserView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +60,7 @@
 		A0AC057F2AEC30B500658871 /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
 		A0AC05812AED1F3A00658871 /* SearchCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCard.swift; sourceTree = "<group>"; };
 		A0CBEA392AF3CB0000C0B6B7 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		A0CBEA3B2AF3D09400C0B6B7 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 				A0AC057D2AEC2C0900658871 /* SearchView.swift */,
 				A0AC05812AED1F3A00658871 /* SearchCard.swift */,
 				A0CBEA392AF3CB0000C0B6B7 /* LoadingView.swift */,
+				A0CBEA3B2AF3D09400C0B6B7 /* UserView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -225,6 +228,7 @@
 				A0AC057E2AEC2C0900658871 /* SearchView.swift in Sources */,
 				A025AE6B2AE5232100E06885 /* ContentView.swift in Sources */,
 				A0CBEA3A2AF3CB0000C0B6B7 /* LoadingView.swift in Sources */,
+				A0CBEA3C2AF3D09400C0B6B7 /* UserView.swift in Sources */,
 				A0AC05802AEC30B500658871 /* SearchModel.swift in Sources */,
 				A025E3F42AE70C8200A01ED6 /* PosterCard.swift in Sources */,
 				A00E9AC02AE69B910010944C /* ContentDetailViewModel.swift in Sources */,
